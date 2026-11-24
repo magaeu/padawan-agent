@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frontend Developer Profile</title>
+  <style>
+    /* Page foundation */
+    :root {
+      --page-background: #ffffff;
+      --text-color: #166534;
+      --accent-color: #1d4ed8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #f3f4f6;
+      color: var(--text-color);
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 16px;
+    }
+
+    /* Profile card */
+    .profile-card {
+      width: 400px;
+      max-width: 100%;
+      margin: 8px;
+      padding: 8px;
+      background: var(--page-background);
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+      text-align: center;
+    }
+
+    .profile-card__image {
+      width: 50px;
+      height: 50px;
+      margin: 8px auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .profile-card__title {
+      margin: 8px 0;
+      color: #000000;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .profile-card__description,
+    .profile-card__profession,
+    .profile-card__contact,
+    .profile-card__keywords {
+      text-align: left;
+    }
+
+    .profile-card__description {
+      margin: 8px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .profile-card__profession {
+      margin: 8px 0;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .profile-card__contact {
+      margin: 8px 0;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .profile-card__keywords {
+      margin: 8px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .keyword {
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .keyword a {
+      display: inline-block;
+      color: var(--keyword-color);
+      text-decoration: none;
+      border-radius: 4px;
+      padding: 2px 3px;
+      transition: filter 160ms ease, text-decoration-color 160ms ease;
+    }
+
+    .keyword a:hover {
+      filter: brightness(55%);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    .keyword a:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+
+    .keyword:nth-child(1) {
+      --keyword-color: #1d4ed8;
+    }
+
+    .keyword:nth-child(2) {
+      --keyword-color: #b45309;
+    }
+
+    .keyword:nth-child(3) {
+      --keyword-color: #7e22ce;
+    }
+
+    .keyword:nth-child(4) {
+      --keyword-color: #be123c;
+    }
+
+    @media (max-width: 448px) {
+      body {
+        padding: 8px;
+      }
+
+      .profile-card {
+        width: 100%;
+        margin: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="profile-card" aria-labelledby="profile-name">
+    <img
+      class="profile-card__image"
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Crect width='50' height='50' rx='10' fill='%23166534'/%3E%3Ccircle cx='25' cy='18' r='8' fill='%23FFFFFF'/%3E%3Cpath d='M11 43c1-9 6-14 14-14s13 5 14 14' fill='%23FFFFFF'/%3E%3C/svg%3E"
+      alt="Generic software developer profile"
+      width="50"
+      height="50"
+    >
+
+    <header>
+      <h1 class="profile-card__title" id="profile-name">Maya Chen</h1>
+    </header>
+
+    <p class="profile-card__description">
+      Frontend engineer crafting accessible, polished interfaces that turn complex product ideas into intuitive digital experiences.
+    </p>
+
+    <p class="profile-card__profession">
+      Senior Frontend Developer
+    </p>
+
+    <p class="profile-card__contact">
+      maya.chen at example.com
+    </p>
+
+    <ul class="profile-card__keywords" aria-label="Professional keywords">
+      <li class="keyword">
+        <a href="https://www.google.com/search?q=Frontend+Development" target="_blank" rel="noopener noreferrer" aria-label="Search for Frontend Development">#Frontend</a>
+      </li>
+      <li class="keyword">
+        <a href="https://www.google.com/search?q=Accessibility" target="_blank" rel="noopener noreferrer" aria-label="Search for Accessibility">#Accessibility</a>
+      </li>
+      <li class="keyword">
+        <a href="https://www.google.com/search?q=React" target="_blank" rel="noopener noreferrer" aria-label="Search for React">#React</a>
+      </li>
+      <li class="keyword">
+        <a href="https://www.google.com/search?q=User+Experience" target="_blank" rel="noopener noreferrer" aria-label="Search for User Experience">#UX</a>
+      </li>
+    </ul>
+  </article>
+</body>
+</html>
