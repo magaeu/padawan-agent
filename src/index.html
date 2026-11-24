@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Frontend Developer Profile</title>
   <style>
-    /* Page foundation */
+    /* ==========================================================
+       Design tokens
+       ========================================================== */
     :root {
-      --page-background: #ffffff;
-      --text-color: #166534;
-      --accent-color: #1d4ed8;
+      --page-background: #ffffff;   /* card background */
+      --text-color: #166534;        /* default text */
+      --accent-color: #1d4ed8;      /* top border + focus ring */
     }
 
+    /* ==========================================================
+       Page foundation
+       ========================================================== */
     * {
       box-sizing: border-box;
     }
@@ -19,35 +24,46 @@
     body {
       min-height: 100vh;
       margin: 0;
+      padding: 8px;
       display: grid;
       place-items: center;
       background: #f3f4f6;
       color: var(--text-color);
       font-family: Arial, Helvetica, sans-serif;
-      padding: 16px;
     }
 
-    /* Profile card */
+    /* Main landmark: centers the card and gives it a width to shrink against */
+    main {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ==========================================================
+       Profile card (400px wide, shrinks on small screens)
+       ========================================================== */
     .profile-card {
       width: 400px;
-      max-width: 100%;
+      max-width: calc(100% - 16px);        /* leaves room for the 8px margins */
       margin: 8px;
       padding: 8px;
       background: var(--page-background);
       border: 1px solid #e5e7eb;
+      border-top: 4px solid var(--accent-color);  /* accent top border */
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
       text-align: center;
     }
 
+    /* Image: centered, 50px, 8px margin. No hover, click or focus styles. */
     .profile-card__image {
+      display: block;
       width: 50px;
       height: 50px;
       margin: 8px auto;
-      display: block;
-      object-fit: contain;
     }
 
+    /* Title: #000000, 16px. No hover, click or focus styles. */
     .profile-card__title {
       margin: 8px 0;
       color: #000000;
@@ -56,6 +72,7 @@
       font-weight: 700;
     }
 
+    /* Left-aligned text blocks */
     .profile-card__description,
     .profile-card__profession,
     .profile-card__contact,
@@ -63,31 +80,38 @@
       text-align: left;
     }
 
+    /* Description: 14px */
     .profile-card__description {
       margin: 8px 0;
       font-size: 14px;
       line-height: 1.5;
     }
 
+    /* Current profession: 12px, below the description */
     .profile-card__profession {
       margin: 8px 0;
       font-size: 12px;
       line-height: 1.4;
     }
 
+    /* Contact: <address> resets italic; plain text, not a link */
     .profile-card__contact {
       margin: 8px 0;
       font-size: 12px;
+      font-style: normal;
       line-height: 1.4;
     }
 
+    /* ==========================================================
+       Keywords (10px, one color each, hover darkens, click searches)
+       ========================================================== */
     .profile-card__keywords {
       margin: 8px 0 0;
+      padding: 0;
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       list-style: none;
-      padding: 0;
     }
 
     .keyword {
@@ -97,92 +121,98 @@
 
     .keyword a {
       display: inline-block;
+      padding: 2px 3px;
       color: var(--keyword-color);
       text-decoration: none;
       border-radius: 4px;
-      padding: 2px 3px;
-      transition: filter 160ms ease, text-decoration-color 160ms ease;
+      transition: filter 160ms ease;
     }
 
+    /* Hover: darken the keyword */
     .keyword a:hover {
       filter: brightness(55%);
       text-decoration: underline;
       text-decoration-thickness: 1px;
     }
 
+    /* Keyboard focus ring for the links only */
     .keyword a:focus-visible {
       outline: 2px solid var(--accent-color);
       outline-offset: 3px;
     }
 
-    .keyword:nth-child(1) {
-      --keyword-color: #1d4ed8;
-    }
+    /* A different color for each keyword */
+    .keyword:nth-child(1) { --keyword-color: #1d4ed8; }
+    .keyword:nth-child(2) { --keyword-color: #b45309; }
+    .keyword:nth-child(3) { --keyword-color: #7e22ce; }
+    .keyword:nth-child(4) { --keyword-color: #be123c; }
 
-    .keyword:nth-child(2) {
-      --keyword-color: #b45309;
-    }
-
-    .keyword:nth-child(3) {
-      --keyword-color: #7e22ce;
-    }
-
-    .keyword:nth-child(4) {
-      --keyword-color: #be123c;
-    }
-
-    @media (max-width: 448px) {
-      body {
-        padding: 8px;
-      }
-
-      .profile-card {
-        width: 100%;
-        margin: 8px;
+    @media (prefers-reduced-motion: reduce) {
+      .keyword a {
+        transition: none;
       }
     }
   </style>
 </head>
 <body>
-  <article class="profile-card" aria-labelledby="profile-name">
-    <img
-      class="profile-card__image"
-      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Crect width='50' height='50' rx='10' fill='%23166534'/%3E%3Ccircle cx='25' cy='18' r='8' fill='%23FFFFFF'/%3E%3Cpath d='M11 43c1-9 6-14 14-14s13 5 14 14' fill='%23FFFFFF'/%3E%3C/svg%3E"
-      alt="Generic software developer profile"
-      width="50"
-      height="50"
-    >
+  <main>
+    <!-- Profile card -->
+    <article class="profile-card" aria-labelledby="profile-name">
 
-    <header>
-      <h1 class="profile-card__title" id="profile-name">Maya Chen</h1>
-    </header>
+      <!-- Generic software developer image (inline SVG, no <title>) -->
+      <svg
+        class="profile-card__image"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 64 64"
+        width="50"
+        height="50"
+        role="img"
+        aria-label="Generic software developer illustration with a code symbol"
+      >
+        <circle cx="32" cy="32" r="30" fill="#E8F5EC" stroke="#166534" stroke-width="2"/>
+        <circle cx="32" cy="23" r="9" fill="#166534"/>
+        <path d="M14 52c0-10 8-16 18-16s18 6 18 16" fill="#166534"/>
+        <rect x="20" y="40" width="24" height="14" rx="2" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2"/>
+        <path d="M28 44l-3 3 3 3M36 44l3 3-3 3" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
 
-    <p class="profile-card__description">
-      Frontend engineer crafting accessible, polished interfaces that turn complex product ideas into intuitive digital experiences.
-    </p>
+      <!-- Title -->
+      <header>
+        <h1 class="profile-card__title" id="profile-name">Maya Chen</h1>
+      </header>
 
-    <p class="profile-card__profession">
-      Senior Frontend Developer
-    </p>
+      <!-- Description (max 20 words) -->
+      <p class="profile-card__description">
+        Frontend engineer crafting accessible, polished interfaces that turn complex product ideas into intuitive digital experiences.
+      </p>
 
-    <p class="profile-card__contact">
-      maya.chen at example.com
-    </p>
+      <!-- Current profession (max 5 words) -->
+      <p class="profile-card__profession">
+        Senior Frontend Developer
+      </p>
 
-    <ul class="profile-card__keywords" aria-label="Professional keywords">
-      <li class="keyword">
-        <a href="https://www.google.com/search?q=Frontend+Development" target="_blank" rel="noopener noreferrer" aria-label="Search for Frontend Development">#Frontend</a>
-      </li>
-      <li class="keyword">
-        <a href="https://www.google.com/search?q=Accessibility" target="_blank" rel="noopener noreferrer" aria-label="Search for Accessibility">#Accessibility</a>
-      </li>
-      <li class="keyword">
-        <a href="https://www.google.com/search?q=React" target="_blank" rel="noopener noreferrer" aria-label="Search for React">#React</a>
-      </li>
-      <li class="keyword">
-        <a href="https://www.google.com/search?q=User+Experience" target="_blank" rel="noopener noreferrer" aria-label="Search for User Experience">#UX</a>
-      </li>
-    </ul>
-  </article>
+      <!-- Contact: email in "example at domain" format -->
+      <address class="profile-card__contact">
+        maya.chen at example.com
+      </address>
+
+      <!-- Keywords: each links to a DuckDuckGo search of the exact keyword -->
+      <ul class="profile-card__keywords" aria-label="Professional keywords">
+        <li class="keyword">
+          <a href="https://duckduckgo.com/?q=Frontend" target="_blank" rel="noopener noreferrer" aria-label="#Frontend, search the web (opens in a new tab)">#Frontend</a>
+        </li>
+        <li class="keyword">
+          <a href="https://duckduckgo.com/?q=Accessibility" target="_blank" rel="noopener noreferrer" aria-label="#Accessibility, search the web (opens in a new tab)">#Accessibility</a>
+        </li>
+        <li class="keyword">
+          <a href="https://duckduckgo.com/?q=React" target="_blank" rel="noopener noreferrer" aria-label="#React, search the web (opens in a new tab)">#React</a>
+        </li>
+        <li class="keyword">
+          <a href="https://duckduckgo.com/?q=UX" target="_blank" rel="noopener noreferrer" aria-label="#UX, search the web (opens in a new tab)">#UX</a>
+        </li>
+      </ul>
+
+    </article>
+  </main>
 </body>
 </html>

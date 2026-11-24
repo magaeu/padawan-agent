@@ -9,18 +9,57 @@ A profile card to demonstrate build AI agents
 - Contact information (only email - in a format: example at domain)
 - Keywords based on description and profession (in format: #keyword)
 
-# Style rules:
+# Document structure
 
-- An image in the center of card with generic profession in software development area width 50px, margin 8px
-- Title with #000000 and size 16px
-- Description aligned to left and size 14px
-- Current profession aligned to left below description and size 12px
-- Keywords aligned to left with different colors for each keyword and size 10px
-- Background #FFFFFF, width 400px, margin 8px
-- Text #166534, padding 8px
-- Accent #1D4ED8
-- Image, title, description and current profession no hover, no click, no focus
-- Keywords with hover to darken and on click go to web and search the keyword
+- `<!doctype html>`, `<html lang="en">`, `<meta charset="utf-8">`, viewport meta `width=device-width, initial-scale=1`
+- `<title>` is the page title
+- Landmarks in this order: `<main>` > `<article aria-labelledby="profile-name">` > svg, `<header>` with `<h1 id="profile-name">`, `<p>` description, `<p>` profession, `<address>` contact, `<ul>` keywords
+
+# Image
+
+- Inline SVG, not `<img>`, viewBox `0 0 64 64`, width and height 50
+- Content: a developer figure with a `</>` laptop icon, with no `<title>` element
+- `role="img"` and a descriptive `aria-label`
+- Centered with `display: block; margin: 8px auto`
+
+# Page
+
+- Page background `#f3f4f6`, font Arial, Helvetica, sans-serif
+- `body`: margin 0, padding 8px, grid with `place-items: center`
+- `main`: width 100%, flex, centered
+
+# Card
+
+- `width: 400px; max-width: calc(100% - 16px); margin: 8px; padding: 8px`
+- Border `1px solid #e5e7eb`, top border `4px solid #1D4ED8`, radius 12px
+- Shadow `0 8px 24px rgba(15, 23, 42, 0.12)`
+- Card text aligned center, so the title is centered
+
+# Text blocks
+
+- Title: `<h1>`, bold, margin 8px 0
+- Description, profession, contact and keywords: left-aligned, margin 8px 0
+- Contact: `<address>` with `font-style: normal`, 12px, plain text (not a link)
+
+# Keywords
+
+- Exactly 4 keywords in a `<ul>` (flex, wrap, gap 6px, no bullets) with `aria-label="Professional keywords"`
+- Colors by position: `#1d4ed8`, `#b45309`, `#7e22ce`, `#be123c`
+- Link: `href="https://duckduckgo.com/?q=<keyword without #>"`, `target="_blank"`, `rel="noopener noreferrer"`
+- `aria-label="#<keyword>, search the web (opens in a new tab)"`
+- Hover: `filter: brightness(55%)` plus a 1px underline
+- Focus (links only): `outline: 2px solid #1D4ED8; outline-offset: 3px`
+- Transition 160ms, disabled under `prefers-reduced-motion`
+
+# Non-interactive elements
+
+- Image, title, description and profession: no `tabindex`, no hover or focus styles, no `cursor: pointer`
+
+# Content limits
+
+- Description 20 words or fewer, profession 5 words or fewer
+- Contact format: `name at domain` (no `@`)
+- Keywords: `#` plus a single word, with a unique color each
 
 # File output:
 
@@ -30,7 +69,9 @@ A profile card to demonstrate build AI agents
 - Mobile reponsive
 - ARIA accessibility
 - Clean, commented code
-- Output only the full HTML
+- Output the raw HTML only: no markdown fences and no explanation
+- Comment every CSS section and every HTML block
+- No external files, fonts, scripts or images (the SVG is inline)
 
 # Checks:
 
