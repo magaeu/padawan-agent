@@ -61,6 +61,11 @@ A profile card to demonstrate build AI agents
 - Contact format: `name at domain` (no `@`)
 - Keywords: `#` plus a single word, with a unique color each
 
+# Rules:
+
+- only read from /specs
+- only write on /src
+
 # File output:
 
 - Single html
