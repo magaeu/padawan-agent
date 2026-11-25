@@ -2,75 +2,114 @@
 
 A README file that reflects the current project
 
-# Parts:
+## Parts:
 
 - Repository name and repository description
 - What it is?
-- Build with
-- Process
-- What I learned?
-- Quick start
-- Live demo
+- What this demonstrates
+- The workflow
+- Build with (technical stack)
 - Repository structure (in tree visualization)
+- Quick start
+- Key Learnings
+- Safety features
+- Live demo
 - License
 - Footer
 
-# Repository name
+## Repository name
 
 - repository name 
 - description 
-A personal [project type] built using agentic engineering during Agentics 101. divided by a horizontal line
+A personal [project type] built using agentic engineering during Agentics 101.
 
-# What it is section
+## What It Is section
 
-- What it is section? title
-- body contains explaination of main purpose, repo content and stack used
+- 'What It Is?' section title
+- body contains explanation of main purpose, repo content and stack used
 - [2-3 sentences describing what this is]
+
+## What This Demonstrates
+
+- **Specification writing**: Converting requirements into precise instructions
+- **AI supervision**: Directing [specify which agent was used] to generate code from specs
+- **Human-in-the-loop review**: Maintaining quality through verification
+- **Safety protocols**: Operating AI within bounded parameters
+- **Professional documentation**: Creating maintainable projects
+
+## The Workflow
+
+Specification → Agent Generation → Human Review → Production
+
+1. Write detailed requirements in `specs/`
+2. AI agent generates code matching specifications
+3. Human verifies output quality and accuracy
+4. Approved code committed and deployed
 
 ## Built With
 
+- should have two sub-sections `Development Tools` and `Approach`
+
+**Development Tools**
+
 - AI Agent: [specify which agent was used]
-- Method: Specification-driven development
-- Human Role: Supervisor and reviewer
+- Version Control: [specify which version control was used]
+- Deployment: GitHub Pages
 
-## Process
+**Approach**
 
-- Module 1: Wrote 10-line micro-spec
-- Module 2: Enhanced with hex codes and measurements
-- Module 3: Set up GitHub repository
-- Module 4: Generated code via agent
+- Methodology: Specification-driven development
+- Human Role: Supervisor, reviewer, quality control
+- Agent Role: Code generation, implementation
+- Safety Model: Human-in-the-loop (HITL)
 
-## What I Learned
+## Repository structure
 
-- Clear specs eliminate AI ambiguity
-- Manual review builds supervision skills
-- Directive feedback produces accurate results
+- Repository structure title
+- tree visualization of repo and quick and simple explanation of each file
 
-# Quick start
+## Quick start
 
 - Quick start title
-- how to start to use the repo (download and execution)
+- how to install and run (for example: git clone and python server command)
+
+**How to use it**
+
+1. **Write Specification** in `specs/` with colors, measurements, behaviors
+2. **Generate Code** using [specify which agent was used] with system prompt
+3. **Review Output** for accuracy and quality
+4. **Deploy** to `docs/` and commit changes
+
+## Key Learnings
+
+- Precise specifications eliminate AI ambiguity
+- Directive feedback beats vague requests
+- Manual review builds error-detection intuition
+- Safety protocols prevent disasters
+
+## Safety Features
+
+- Human approval required for all changes  
+- Agent scope bounded to specific folders  
+- Full Git history for rollback capability  
+- Documented procedures in SAFETY.md
 
 ## Live Demo
 
 - [add deployment link]
 
-# Repository structure
+## License
 
-- Repository structure title
-- tree visualization of repo and quick and simple explanation of each file
+- License title (only generated if repository has a LICENSE file)
 
-# License
-
-- License title (only generated if repository has a LICENSE.md file)
-
-# Footer
+## Footer
 
 - **Course:** Agentics 101 | Bradley Ross, Nicholas Ruest, The Agentics Foundation
-- Made with ❤ aligned at the center
+- Made with ❤ centered
 
-# Checks
+## Checks
 
 - README.md on root folder is created OR updated
+- Verify broken relative links, valid heading structure, matching repository structure, and the absence of unresolved placeholders
 - Sections are created (no unnecessary sections are created)
 - single README.md file is presented on root folder
