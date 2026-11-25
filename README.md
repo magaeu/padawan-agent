@@ -92,7 +92,7 @@ padawan-agent/
 
 ## Live Demo
 
-[View the live demo](https://magaeu.github.io/padawan-agent/src/)
+[View the live demo](https://magaeu.github.io/padawan-agent)
 
 
 **Course:** Agentics 101 | Bradley Ross, Nicholas Ruest, The Agentics Foundation

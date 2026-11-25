@@ -8,7 +8,7 @@ This AI agent converts specifications into code with human oversight.
 
 1. **Human Approval Required**: Every change needs explicit review
 
-2. **Bounded Scope**: Agent only modifies files in `src/`
+2. **Bounded Scope**: Agent only modifies files in `docs/`
 
 3. **Read Before Write**: Agent must see current code before changes
 
@@ -20,7 +20,7 @@ This AI agent converts specifications into code with human oversight.
 
 - Suggest improvements  
 
-- Update files in `src/`
+- Update files in `docs/`
 
 - Generate `.log` file with summary of changes into `logs/`. Format `{TIMESTAMP}-log.log`
 
