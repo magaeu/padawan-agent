@@ -5,18 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Frontend Developer Profile</title>
   <style>
-    /* ==========================================================
-       Design tokens
-       ========================================================== */
+    /* Design tokens */
     :root {
-      --page-background: #ffffff;   /* card background */
-      --text-color: #166534;        /* default text */
-      --accent-color: #1d4ed8;      /* top border + focus ring */
+      --page-background: #ffffff;
+      --text-color: #166534;
+      --accent-color: #1d4ed8;
+      --border-color: #e5e7eb;
     }
 
-    /* ==========================================================
-       Page foundation
-       ========================================================== */
+    /* Page foundation */
     * {
       box-sizing: border-box;
     }
@@ -32,30 +29,32 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* Main landmark: centers the card and gives it a width to shrink against */
     main {
       width: 100%;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
     }
 
-    /* ==========================================================
-       Profile card (400px wide, shrinks on small screens)
-       ========================================================== */
-    .profile-card {
+    /* Shared card styles */
+    .card {
       width: 400px;
-      max-width: calc(100% - 16px);        /* leaves room for the 8px margins */
+      max-width: calc(100% - 16px);
       margin: 8px;
       padding: 8px;
       background: var(--page-background);
-      border: 1px solid #e5e7eb;
-      border-top: 4px solid var(--accent-color);  /* accent top border */
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--accent-color);
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .profile-card {
       text-align: center;
     }
 
-    /* Image: centered, 50px, 8px margin. No hover, click or focus styles. */
+    /* Profile image and text */
     .profile-card__image {
       display: block;
       width: 50px;
@@ -63,7 +62,6 @@
       margin: 8px auto;
     }
 
-    /* Title: #000000, 16px. No hover, click or focus styles. */
     .profile-card__title {
       margin: 8px 0;
       color: #000000;
@@ -72,7 +70,6 @@
       font-weight: 700;
     }
 
-    /* Left-aligned text blocks */
     .profile-card__description,
     .profile-card__profession,
     .profile-card__contact,
@@ -80,21 +77,18 @@
       text-align: left;
     }
 
-    /* Description: 14px */
     .profile-card__description {
       margin: 8px 0;
       font-size: 14px;
       line-height: 1.5;
     }
 
-    /* Current profession: 12px, below the description */
     .profile-card__profession {
       margin: 8px 0;
       font-size: 12px;
       line-height: 1.4;
     }
 
-    /* Contact: <address> resets italic; plain text, not a link */
     .profile-card__contact {
       margin: 8px 0;
       font-size: 12px;
@@ -102,11 +96,9 @@
       line-height: 1.4;
     }
 
-    /* ==========================================================
-       Keywords (10px, one color each, hover darkens, click searches)
-       ========================================================== */
+    /* Profile keywords */
     .profile-card__keywords {
-      margin: 8px 0 0;
+      margin: 8px 0;
       padding: 0;
       display: flex;
       flex-wrap: wrap;
@@ -128,24 +120,118 @@
       transition: filter 160ms ease;
     }
 
-    /* Hover: darken the keyword */
     .keyword a:hover {
       filter: brightness(55%);
       text-decoration: underline;
       text-decoration-thickness: 1px;
     }
 
-    /* Keyboard focus ring for the links only */
-    .keyword a:focus-visible {
+    .keyword a:focus-visible,
+    .contact-card a:focus-visible,
+    .contact-card input:focus-visible,
+    .contact-card textarea:focus-visible,
+    .contact-card button:focus-visible {
       outline: 2px solid var(--accent-color);
       outline-offset: 3px;
     }
 
-    /* A different color for each keyword */
     .keyword:nth-child(1) { --keyword-color: #1d4ed8; }
     .keyword:nth-child(2) { --keyword-color: #b45309; }
     .keyword:nth-child(3) { --keyword-color: #7e22ce; }
     .keyword:nth-child(4) { --keyword-color: #be123c; }
+
+    /* Contact form */
+    .contact-card {
+      color: var(--text-color);
+    }
+
+    .contact-card__title {
+      margin: 8px 0 16px;
+      color: #000000;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .contact-card form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 4px;
+    }
+
+    .form-field label,
+    .consent label {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 8px;
+      color: var(--text-color);
+      font: inherit;
+      border: 1px solid #9ca3af;
+      border-radius: 4px;
+    }
+
+    .form-field textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .field-error {
+      margin: 0;
+      color: #b91c1c;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .consent input {
+      flex: 0 0 auto;
+      margin: 2px 0 0;
+    }
+
+    .consent-copy {
+      display: grid;
+      gap: 4px;
+    }
+
+    .contact-card a {
+      color: #1d4ed8;
+      font-size: 12px;
+    }
+
+    .contact-card button {
+      justify-self: start;
+      padding: 8px 16px;
+      color: #ffffff;
+      background: var(--accent-color);
+      border: 0;
+      border-radius: 4px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .contact-card button:hover {
+      filter: brightness(85%);
+    }
+
+    .form-feedback {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .keyword a {
@@ -157,9 +243,8 @@
 <body>
   <main>
     <!-- Profile card -->
-    <article class="profile-card" aria-labelledby="profile-name">
-
-      <!-- Generic software developer image (inline SVG, no <title>) -->
+    <article class="card profile-card" aria-labelledby="profile-name">
+      <!-- Inline developer illustration -->
       <svg
         class="profile-card__image"
         xmlns="http://www.w3.org/2000/svg"
@@ -176,27 +261,21 @@
         <path d="M28 44l-3 3 3 3M36 44l3 3-3 3" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
 
-      <!-- Title -->
+      <!-- Profile heading -->
       <header>
         <h1 class="profile-card__title" id="profile-name">Maya Chen</h1>
       </header>
 
-      <!-- Description (max 20 words) -->
+      <!-- Profile description and profession -->
       <p class="profile-card__description">
         Frontend engineer crafting accessible, polished interfaces that turn complex product ideas into intuitive digital experiences.
       </p>
+      <p class="profile-card__profession">Senior Frontend Developer</p>
 
-      <!-- Current profession (max 5 words) -->
-      <p class="profile-card__profession">
-        Senior Frontend Developer
-      </p>
+      <!-- Plain-text contact information -->
+      <address class="profile-card__contact">maya.chen at example.com</address>
 
-      <!-- Contact: email in "example at domain" format -->
-      <address class="profile-card__contact">
-        maya.chen at example.com
-      </address>
-
-      <!-- Keywords: each links to a DuckDuckGo search of the exact keyword -->
+      <!-- Professional keywords -->
       <ul class="profile-card__keywords" aria-label="Professional keywords">
         <li class="keyword">
           <a href="https://duckduckgo.com/?q=Frontend" target="_blank" rel="noopener noreferrer" aria-label="#Frontend, search the web (opens in a new tab)">#Frontend</a>
@@ -211,8 +290,180 @@
           <a href="https://duckduckgo.com/?q=UX" target="_blank" rel="noopener noreferrer" aria-label="#UX, search the web (opens in a new tab)">#UX</a>
         </li>
       </ul>
-
     </article>
+
+    <!-- Contact form -->
+    <section class="card contact-card" aria-labelledby="contact-form-title">
+      <h2 class="contact-card__title" id="contact-form-title">Contact Form</h2>
+
+      <form id="contact-form" novalidate>
+        <div class="form-field">
+          <label for="contact-name">Name</label>
+          <input
+            id="contact-name"
+            name="name"
+            type="text"
+            maxlength="20"
+            autocomplete="name"
+            required
+            aria-describedby="name-error"
+          >
+          <p class="field-error" id="name-error" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="form-field">
+          <label for="contact-email">Email</label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            maxlength="20"
+            autocomplete="email"
+            required
+            aria-describedby="email-error"
+          >
+          <p class="field-error" id="email-error" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="form-field">
+          <label for="contact-subject">Subject</label>
+          <textarea
+            id="contact-subject"
+            name="subject"
+            maxlength="180"
+            required
+            aria-describedby="subject-error"
+          ></textarea>
+          <p class="field-error" id="subject-error" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="form-field">
+          <div class="consent">
+            <input
+              id="contact-consent"
+              name="consent"
+              type="checkbox"
+              required
+              aria-describedby="consent-error"
+            >
+            <div class="consent-copy">
+              <label for="contact-consent">I consent to the use of my information</label>
+              <a
+                href="https://www.privacypolicytemplate.net/generic-privacy-policy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Privacy Policy (opens in a new tab)"
+              >Privacy Policy</a>
+            </div>
+          </div>
+          <p class="field-error" id="consent-error" aria-live="polite" hidden></p>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <p class="form-feedback" id="form-success" role="status" aria-live="polite" hidden>
+        Your message was sent successfully. We will reach out soon!
+      </p>
+    </section>
   </main>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const successMessage = document.getElementById("form-success");
+
+    const fields = {
+      name: {
+        input: document.getElementById("contact-name"),
+        error: document.getElementById("name-error")
+      },
+      email: {
+        input: document.getElementById("contact-email"),
+        error: document.getElementById("email-error")
+      },
+      subject: {
+        input: document.getElementById("contact-subject"),
+        error: document.getElementById("subject-error")
+      },
+      consent: {
+        input: document.getElementById("contact-consent"),
+        error: document.getElementById("consent-error")
+      }
+    };
+
+    function showFieldError(field, message) {
+      field.input.setAttribute("aria-invalid", "true");
+      field.error.textContent = message;
+      field.error.hidden = false;
+    }
+
+    function clearFieldError(field) {
+      field.input.removeAttribute("aria-invalid");
+      field.error.textContent = "";
+      field.error.hidden = true;
+    }
+
+    function encodeSubjectForState(value) {
+      return value.replace(/[#$%&*()!~?,<>\/]/g, character =>
+        `%${character.charCodeAt(0).toString(16).toUpperCase().padStart(2, "0")}`
+      );
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const name = fields.name.input.value.trim().replace(/\s+/g, " ");
+      const email = fields.email.input.value.trim();
+      const subject = fields.subject.input.value;
+
+      fields.name.input.value = name;
+      fields.email.input.value = email;
+
+      const errors = [];
+
+      if (!name) {
+        errors.push([fields.name, "This field is required"]);
+      } else if (name.length > 20 || /[@#$%&*()!~?,<>\/]/.test(name)) {
+        errors.push([fields.name, "This field has an error. Please fix it before submit it."]);
+      }
+
+      if (!email) {
+        errors.push([fields.email, "This field is required"]);
+      } else if (
+        email.length > 20 ||
+        !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)
+      ) {
+        errors.push([fields.email, "This field has an error. Please fix it before submit it."]);
+      }
+
+      if (!subject) {
+        errors.push([fields.subject, "This field is required"]);
+      } else if (subject.length > 180) {
+        errors.push([fields.subject, "This field has an error. Please fix it before submit it."]);
+      }
+
+      if (!fields.consent.input.checked) {
+        errors.push([fields.consent, "This field is required"]);
+      }
+
+      Object.values(fields).forEach(clearFieldError);
+
+      if (errors.length > 0) {
+        errors.forEach(([field, message]) => showFieldError(field, message));
+        return;
+      }
+
+      const submissionState = {
+        name,
+        email,
+        subject: encodeSubjectForState(subject)
+      };
+
+      form.dataset.submissionState = JSON.stringify(submissionState);
+      form.reset();
+      form.hidden = true;
+      successMessage.hidden = false;
+    });
+  </script>
 </body>
 </html>
